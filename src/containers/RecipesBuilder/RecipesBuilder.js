@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-
+import Recipe from '../../components/Recipe/Recipe';
 import Aux from '../../hoc/auxiliary';
 
 class RecipesBuilder extends Component{
+
+    state = {
+        data: {
+            http: 'http://przepisy.pl',
+            photo: 'http://przepisy.pl/photo',
+            title: 'ciasteczka'
+      
+}
+    }
+
     render(){
         return(
             <Aux>
-                <div>Recipes</div>
+                <Recipe data={this.state.data}/>
                 <div>Build Controls</div>
             </Aux>
         );

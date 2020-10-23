@@ -5,13 +5,16 @@ import Aux from '../../hoc/auxiliary';
 class RecipesBuilder extends Component{
 
     state = {
-        data: {
+        data: [{
             http: 'http://przepisy.pl',
             photo: 'http://przepisy.pl/photo',
-            title: 'ciasteczka'
-      
-}
-    }
+            title: 'ciasteczka'},
+    {
+        http: 'http://przyslijprzepis.pl',
+        photo: 'http://przepisy.pl/photo',
+        title: 'Mazurek'},
+        
+]}
 
     render(){
         return(

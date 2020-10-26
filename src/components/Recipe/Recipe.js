@@ -5,14 +5,15 @@ const recipe = (props) =>{
 
     const data = props.data;
 
-     const transformedData = data.map(({title, http}) => {
+     let transformedData = data.map(({title, http}) => {
          return <p key={title}>{title} - {http}</p>
-     })
-        
+     });
   
-       
+       console.log(transformedData);
 
-    
+    if(transformedData.length === 0){
+        transformedData = 'nie masz zapisanych przepisów';
+    }
 
    
         return(

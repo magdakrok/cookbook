@@ -1,10 +1,18 @@
 import React from 'react';
 import classes from '../Modal/Modal.module.css';
+import Aux from '../../../hoc/auxiliary';
+import Backdrop from '../Backdrop/Backdrop';
+import { ProgressPlugin } from 'webpack';
 
 const modal = (props) => (
-    <div className = {classes.Modal}>
+    <Aux>
+        <Backdrop show = {props.show} click={props.modalClosed}/>
+    <div className = {classes.Modal}
+        style = {{transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+         opacity: props.show ? '1' : '0'}}>
         {props.children}
     </div>
+    </Aux>
 );
 
 export default modal;

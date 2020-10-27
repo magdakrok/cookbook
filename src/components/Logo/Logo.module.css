@@ -1,0 +1,9 @@
+.Logo{
+    background-color: salmon;
+    padding: 8px;
+    height: 70%;
+}
+
+.Logo img{
+    height: 100%;
+}

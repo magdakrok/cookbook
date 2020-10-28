@@ -25,3 +25,22 @@
 
 }
 
+@media(min-width: 500px){
+    .NavigationItem{
+        margin: 10px 0;
+        display: block;
+        height: 100%;
+        width: auto;
+        align-items: center;
+    }
+    
+    .NavigationItem a{
+        color: white;
+        width: 100%;
+        padding: 16px 10px;
+        border-bottom: 4px solid transparent;
+       
+    
+    }
+}
+

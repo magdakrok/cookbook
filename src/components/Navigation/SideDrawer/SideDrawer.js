@@ -5,6 +5,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Aux from '../../../hoc/auxiliary';
 import classes from './SideDrawer.module.css';
+import CloseToggle from './CloseToggle/CloseToggle';
 
 const sideDrawer = (props) => {
  
@@ -16,10 +17,12 @@ const sideDrawer = (props) => {
         <Aux>
             <Backdrop show={props.open} clicked={props.closed}/>
         <div className={attachedClasses.join(' ')}>
-            <Logo  height="11%"/>
+            <CloseToggle />
+            
             <nav>
                 <NavigationItems />
             </nav>
+            <Logo  height="11%"/>
         </div>
         </Aux>
     );

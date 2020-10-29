@@ -1,0 +1,25 @@
+.CloseToggle1{
+    height: 5px;
+    width: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 30px;
+    left: 20px;
+  }
+  
+  .CloseToggle2{
+    height: 5px;
+    width: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 30px;
+    left: 20px;
+  }

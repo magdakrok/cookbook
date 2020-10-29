@@ -2,3 +2,9 @@
     height: 45px;
     width: 45px;
 }
+
+@media(min-width: 500px){
+    .Toggle{
+        display: none;
+    }
+}

@@ -12,6 +12,8 @@
     .NavigationItems{
         flex-flow: row;
         margin-top: 0;
+        align-self: flex-end;
+       
        
     }
 }

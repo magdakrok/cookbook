@@ -1,7 +1,36 @@
-.Toggle{
-    height: 45px;
-    width: 45px;
-}
+
+.ToggleButton1{
+    height: 5px;
+      width: 45px;
+      background-color: black;
+      border: 1px solid black;
+      border-radius: 10px;
+      position: absolute;
+      top: 1.4rem;
+      left: 20px;
+    }
+    
+    .ToggleButton2{
+        height: 5px;
+      width: 45px;
+      background-color: black;
+      border: 1px solid black;
+      border-radius: 10px;
+      position: absolute;
+      top: 2rem;
+      left: 20px;
+    }
+    
+    .ToggleButton3{
+        height: 5px;
+        width: 45px;
+        background-color: black;
+        border: 1px solid black;
+        border-radius: 10px;
+        position: absolute;
+        top: 2.6rem;
+        left: 20px;
+    }
 
 @media(min-width: 500px){
     .Toggle{

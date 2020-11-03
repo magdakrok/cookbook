@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './CloseToggle.module.css';
-import Aux from '../../../../hoc/auxiliary';
 
 const closeToggle = (props) =>(
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import toggleIcon from '../../../../assets/images/menu.png';
 import classes from './Toggle.module.css';
 
 const toggle = (props) => (

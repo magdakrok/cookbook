@@ -1,8 +1,7 @@
 import React from 'react';
 import classes from '../Modal/Modal.module.css';
-import Aux from '../../../hoc/auxiliary';
+import Aux from '../../../hoc/Auxiliary/auxiliary';
 import Backdrop from '../Backdrop/Backdrop';
-import { ProgressPlugin } from 'webpack';
 
 const modal = (props) => (
     <Aux>

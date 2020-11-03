@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Recipe from '../../components/Recipe/Recipe';
-import Aux from '../../hoc/auxiliary';
+import Aux from '../../hoc/Auxiliary/auxiliary';
 
 class RecipesBuilder extends Component{
 

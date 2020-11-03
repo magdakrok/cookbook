@@ -1,5 +1,5 @@
 import React from 'react';
-import Aux from '../../hoc/auxiliary';
+import Aux from '../../hoc/Auxiliary/auxiliary';
 
 const recipe = (props) =>{
 

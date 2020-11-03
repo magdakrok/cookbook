@@ -3,7 +3,7 @@ import React from 'react';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
-import Aux from '../../../hoc/auxiliary';
+import Aux from '../../../hoc/Auxiliary/auxiliary';
 import classes from './SideDrawer.module.css';
 import CloseToggle from './CloseToggle/CloseToggle';
 

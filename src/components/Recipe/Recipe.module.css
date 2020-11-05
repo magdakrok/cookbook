@@ -1,3 +1,31 @@
 .Recipe{
-    margin-top: 200px;
+    width: 100%;
+    height: 35vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+
+}
+.RecipeAll{
+    margin-top: 5rem;;
+}
+
+.Recipe:hover{
+    background-color: salmon;
+}
+
+.RecipePhotoContainer{
+   width:  30%;
+}
+
+.RecipePhoto{
+    width: auto ;
+    height: 30vh;
+    margin-left: 3rem;;
+}
+
+.RecipeTitle{
+    margin-left: 2rem;;
 }

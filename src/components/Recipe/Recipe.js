@@ -7,8 +7,21 @@ const recipe = (props) =>{
     const data = props.data;
      
    let transformedData = Object.keys(data).map(key => {
-      return [...Array(data[key])].map(cKey => {
-          return <p key={cKey}>{cKey.title} - {cKey.http}</p>
+      return [...Array(data[key])].map((cKey, i ) => {
+         return (
+            
+                <div key={cKey + i}>
+                  <div className={classes.Recipe} key={i}>
+                        <div className={classes.RecipePhotoContainer}>
+                            <img src={cKey.photo} className={classes.RecipePhoto}></img>
+                        </div> 
+                    <div className={classes.RecipeTitle}><h2>{cKey.title}</h2>
+                    </div> 
+                   
+                    </div>
+                    
+                </div>)
+
         
       })
   })
@@ -22,7 +35,7 @@ const recipe = (props) =>{
    
         return(
             <Aux>
-                <div className={classes.Recipe}>
+                <div className={classes.RecipeAll}>
                 {transformedData}
                 </div>
                 <div>Build Controls</div>

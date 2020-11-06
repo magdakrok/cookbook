@@ -1,12 +1,11 @@
 .Recipe{
     width: 100%;
-    height: 35vh;
+    height: auto;
+    margin: 0.5rem 0;
     background-color: white;
     display: flex;
     align-items: center;
-    justify-content: start;
-
-
+   
 }
 .RecipeAll{
     margin-top: 5rem;;
@@ -14,6 +13,8 @@
 
 .Recipe:hover{
     background-color: salmon;
+    cursor: pointer;
+    
 }
 
 .RecipePhotoContainer{
@@ -22,10 +23,29 @@
 
 .RecipePhoto{
     width: auto ;
-    height: 30vh;
-    margin-left: 3rem;;
+    height: 10vh;
+    margin-left: 0;
+}
+ 
+.RecipeTitle{
+    margin-left: 1rem;
+    justify-content: center;
 }
 
-.RecipeTitle{
-    margin-left: 2rem;;
+
+
+@media(min-width: 1170px){
+    .Recipe{
+        height: 35vh;
+    }
+    
+    .RecipePhoto{
+        width: auto ;
+        height: 30vh;
+        margin-left: 3rem;;
+    }
+
+    .RecipeTitle{
+        margin-left: 2rem;;
+    }
 }

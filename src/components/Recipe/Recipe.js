@@ -10,13 +10,11 @@ const recipe = (props) =>{
       return [...Array(data[key])].map((cKey, i ) => {
          return (
             
-                <div key={cKey + i}>
+                <div className={classes.RecipeAll} key={cKey + i}>
                   <div className={classes.Recipe} key={i}>
-                        <div className={classes.RecipePhotoContainer}>
-                            <img src={cKey.photo} className={classes.RecipePhoto}></img>
-                        </div> 
-                    <div className={classes.RecipeTitle}><h2>{cKey.title}</h2>
-                    </div> 
+                       <img src={cKey.photo} className={classes.RecipePhoto}></img>
+                       <span className={classes.RecipeTitle}>{cKey.title}</span>
+                        
                    
                     </div>
                     

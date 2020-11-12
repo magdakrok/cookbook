@@ -1,10 +1,22 @@
 import React from 'react';
 import Aux from '../../hoc/Auxiliary/auxiliary';
 import classes from './Recipe.module.css';
+import cake from '../../assets/images/ciasto.jpg';
 
 const recipe = (props) =>{
 
     const data = props.data;
+    let photo;
+
+     let checkPhoto = (photoCake) => {
+        if(photoCake === ""){
+            photo = cake;
+           return photo;
+        } else {
+            photo = photoCake;
+            return photo;
+        }
+    }
      
    let transformedData = Object.keys(data).map(key => {
       return [...Array(data[key])].map((cKey, i ) => {
@@ -12,7 +24,8 @@ const recipe = (props) =>{
             
                 <div className={classes.RecipeAll} key={cKey + i}>
                   <div className={classes.Recipe} key={i}>
-                       <img src={cKey.photo} className={classes.RecipePhoto}></img>
+                     
+                       <img src={checkPhoto(cKey.photo)} className={classes.RecipePhoto}></img>
                        <span className={classes.RecipeTitle}>{cKey.title}</span>
                         
                    

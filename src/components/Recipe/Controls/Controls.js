@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from '../Controls/Controls.module.css';
+import Button from '../../UI/Button/Button';
 
-const controls = (props) => (
+class Controls extends Component{
 
-    <div>
+    componentDidMount(id){
 
-    </div>
-);
+    }
 
+    deleteHandler = () => {
+        alert("Usunięte")
+    }
 
-export default controls;
+    render(){
+        return (
+           <Button btnTypes="Danger" clicked={this.deleteHandler}>Usuń</Button>
+        )
+    }
+}
+
+export default Controls;

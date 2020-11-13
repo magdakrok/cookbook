@@ -42,12 +42,16 @@
     font-size: large;
 }
 
+.RecipeHttp{
+    text-decoration: none;
+
+}
 
 
 @media(min-width: 500px){
     .Recipe{
         width: 100%;
-        height: auto;
+       
        
         background-color: white;
         display: flex;
@@ -55,6 +59,7 @@
         justify-content: center;
         text-align: center;
         justify-items: center;
+       
        
     }
     .RecipeAll{
@@ -78,7 +83,8 @@
      
     .RecipeTitle{
         margin: 1rem;
-        
+        padding-left: 2rem;
+        height: 10vh;
         width: 70%;
         font-weight: 700;
         font-size: large;

@@ -35,7 +35,7 @@ componentDidMount(){
             <Aux>
                 
                 {recipe}
-                <div>Build Controls</div>
+                
             </Aux>
         );
     }

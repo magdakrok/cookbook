@@ -29,10 +29,15 @@ const recipe = (props) =>{
             
                 <div key={cKey}>
                     <a href={cKey.http} className={classes.RecipeHttp}>
-                        <div className={classes.Recipe} >
-                            <img src={checkPhoto(cKey.photo)} className={classes.RecipePhoto}></img>
+                        <div className={classes.Recipe}>
+                            <div className={classes.RecipeTop}>
+                                <img src={checkPhoto(cKey.photo)} className={classes.RecipePhoto}></img>
+                            </div>
+                            <div className={classes.RecipeBottom}>
+                           
                              <span className={classes.RecipeTitle}>{cKey.title}</span>
                              <Controls id={cKey}></Controls>
+                             </div>
                        </div>
                     </a>
                    

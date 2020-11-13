@@ -5,10 +5,11 @@
     outline: none;
     cursor: pointer;
     font: inherit;
-  padding: 1rem;
+    width: 5rem;;
+    padding: 0.5rem;
  
     font-weight: bold;
-    width: 10vw;
+   
     
 }
 
@@ -23,4 +24,11 @@
 
 .Danger{
     color: red;
+}
+
+@media(min-width: 500px){
+    .Button{
+        padding: 1rem;
+        width: 10vw;
+    }
 }

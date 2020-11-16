@@ -28,7 +28,7 @@ const recipe = (props) =>{
          return (
             
                 <div key={cKey}>
-                    <a href={cKey.http} className={classes.RecipeHttp}>
+                    {/* <a href={cKey.http} className={classes.RecipeHttp}> */}
                         <div className={classes.Recipe}>
                             <div className={classes.RecipeTop}>
                                 <img src={checkPhoto(cKey.photo)} className={classes.RecipePhoto}></img>
@@ -36,10 +36,10 @@ const recipe = (props) =>{
                             <div className={classes.RecipeBottom}>
                            
                              <span className={classes.RecipeTitle}>{cKey.title}</span>
-                             <Controls id={cKey}></Controls>
+                             <Controls clicked={key}></Controls>
                              </div>
                        </div>
-                    </a>
+                    {/* </a> */}
                    
                 </div>)
 

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import classes from '../Controls/Controls.module.css';
 import Button from '../../UI/Button/Button';
 import axios from '../../../axios-instance';
+import HeartButton from '../../UI/Button/HeartButton/HeartButton';
+import Aux from '../../../hoc/Auxiliary/auxiliary';
+
 
 class Controls extends Component{
 
@@ -25,7 +28,12 @@ class Controls extends Component{
 
     render(){
         return (
+            <Aux>
+           <div className={classes.Control}>
+           <HeartButton>Favorite</HeartButton>
            <Button btnTypes="Danger" clicked={(e) => this.deleteHandler(this.props.clicked,e)}>Usuń</Button>
+           </div>
+           </Aux>
         )
     }
 }

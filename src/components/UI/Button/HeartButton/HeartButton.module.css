@@ -1,0 +1,35 @@
+ .Heart{
+        background-color: red;
+        border: none;
+        display: inline-block;
+        height: 20px;
+        margin: 0 10px;
+        position: relative;
+        
+        transform: rotate(-45deg);
+        width: 20px;
+      }
+      
+      .Heart:before,
+      .Heart:after {
+        content: "";
+        background-color: red;
+        border-radius: 50%;
+        height: 20px;
+        position: absolute;
+        width: 20px;
+      }
+      
+      .Heart:before {
+        top: -10px;
+        left: 0;
+      }
+      
+      .Heart:after {
+        left: 10px;
+        top: 0;
+      }
+
+      .Heart:hover{
+        cursor: pointer;
+      }

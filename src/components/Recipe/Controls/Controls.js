@@ -7,21 +7,25 @@ class Controls extends Component{
 
     
 
-    deleteHandler = (cakeId, e) => {
-        axios.delete(`https://cookbook-addec.firebaseio.com/cake.json/${cakeId}`
+    deleteHandler = (key,  e) => {
+        axios.delete(`https://cookbook-addec.firebaseio.com/cake/${key}.json`
         )
         .then(res => {
             console.log(res);
             console.log(res.data)
+            alert("Usunięto!")
         })
         .catch(e =>{
             alert("error")
         })
+       
+
+        console.log(this.props)
     }
 
     render(){
         return (
-           <Button btnTypes="Danger" clicked={(e) => this.deleteHandler(this.props.cakeId, e)}>Usuń</Button>
+           <Button btnTypes="Danger" clicked={(e) => this.deleteHandler(this.props.clicked,e)}>Usuń</Button>
         )
     }
 }

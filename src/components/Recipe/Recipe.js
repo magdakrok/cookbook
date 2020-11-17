@@ -3,6 +3,7 @@ import Aux from '../../hoc/Auxiliary/auxiliary';
 import classes from './Recipe.module.css';
 import cake from '../../assets/images/ciasto.jpg';
 import Controls from './Controls/Controls';
+import { ID } from 'webpack/lib/ModuleFilenameHelpers';
 
 const recipe = (props) =>{
 
@@ -37,15 +38,19 @@ const recipe = (props) =>{
                            
                              <span className={classes.RecipeTitle}>{cKey.title}</span>
                              <Controls clicked={key}></Controls>
+                             
                              </div>
+                            
                        </div>
+                      
                     {/* </a> */}
                    
                 </div>)
 
-        
+         
       })
-  })
+  }
+  )
    
        console.log(transformedData);
 
@@ -58,6 +63,7 @@ const recipe = (props) =>{
             <Aux>
                 <div className={classes.RecipeAll}>
                 {transformedData}
+               
                 </div>
                
             </Aux>

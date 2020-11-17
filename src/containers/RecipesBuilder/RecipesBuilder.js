@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Recipe from '../../components/Recipe/Recipe';
 import Aux from '../../hoc/Auxiliary/auxiliary';
 import axios from '../../axios-instance';
+import Controls from '../../components/Recipe/Controls/Controls';
 
 class RecipesBuilder extends Component{
 

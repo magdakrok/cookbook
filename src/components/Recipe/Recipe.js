@@ -4,6 +4,7 @@ import classes from './Recipe.module.css';
 import cake from '../../assets/images/ciasto.jpg';
 import Controls from './Controls/Controls';
 import { ID } from 'webpack/lib/ModuleFilenameHelpers';
+import RecipeButtons from './RecipeButtons/RecipeButtons';
 
 const recipe = (props) =>{
 
@@ -37,7 +38,8 @@ const recipe = (props) =>{
                             <div className={classes.RecipeBottom}>
                            
                              <span className={classes.RecipeTitle}>{cKey.title}</span>
-                             <Controls clicked={key}></Controls>
+                             <RecipeButtons type="delete" clicked={key}></RecipeButtons>
+                             <RecipeButtons type="favorite" clicked={cKey.favorite}></RecipeButtons>
                              
                              </div>
                             

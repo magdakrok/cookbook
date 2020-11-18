@@ -14,6 +14,7 @@ class Controls extends Component{
 
     
     
+    
 
     deleteHandler = (key,  e) => {
         axios.delete(`https://cookbook-addec.firebaseio.com/cake/${key}.json`
@@ -45,7 +46,7 @@ class Controls extends Component{
             <Aux>
            <div className={classes.Control}>
            <HeartButton btnTypes={checkFavorite}></HeartButton>
-           <Button btnTypes="Danger" clicked={(e) => this.deleteHandler(this.props.clicked,e)}>Usuń</Button>
+           <Button btnTypes="Danger" clicked={(e) => this.deleteHandler(this.props.clicked, e)}>Usuń</Button>
            </div>
            </Aux>
         )

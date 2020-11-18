@@ -21,9 +21,7 @@ const recipe = (props) =>{
         }
     }
 
-   let deleteHandler = (cKey) =>{
-        
-    }
+ 
      
    let transformedData = Object.keys(data).map(key => {
       return [...Array(data[key])].map((cKey, i ) => {
@@ -39,7 +37,7 @@ const recipe = (props) =>{
                            
                              <span className={classes.RecipeTitle}>{cKey.title}</span>
                              <RecipeButtons type="delete" clicked={key}></RecipeButtons>
-                             <RecipeButtons type="favorite" clicked={cKey.favorite}></RecipeButtons>
+                             <RecipeButtons type="favorite" clicked={key}></RecipeButtons>
                              
                              </div>
                             

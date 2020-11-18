@@ -9,7 +9,7 @@ const recipeButtons = (props) => {
   
     switch(props.type){
         case ('favorite'): 
-            button = <HeartButton btnTypes={props.clicked}></HeartButton>
+            button = <HeartButton btnTypes={props.clicked} clicked = {props.clicked}></HeartButton>
             break;
         case ('delete'):
             button = <Button btnTypes="Danger" clicked={props.clicked}>Usuń</Button>;

@@ -6,7 +6,7 @@ const recipeButtons = (props) => {
 
     let button = null;
 
-    console.log(props.clicked);
+  
     switch(props.type){
         case ('favorite'): 
             button = <HeartButton btnTypes={props.clicked}></HeartButton>

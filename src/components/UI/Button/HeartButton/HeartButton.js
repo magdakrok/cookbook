@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './HeartButton.module.css';
 
-const heartButton = (props) => {
+class heartButton extends Component {
 
+    
+    render(){
     let type;
-    console.log(props.btnTypes)
-    if(props.btnTypes){
+   
+    if(this.props.btnTypes){
         type = 'HeartFavorite'
     }else {
         type = 'HeartUnFavorite'
     }
 
-    console.log(type);
+   
     return(
     <button 
         className = {[classes.Heart, classes[type]].join(' ')}
         // onClick = {props.clicked}
         >
-        {props.children}
+        {this.props.children}
     </button>
     );
+    }
 };
 
 export default heartButton;

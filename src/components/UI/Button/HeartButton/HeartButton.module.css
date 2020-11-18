@@ -1,5 +1,5 @@
  .Heart{
-        background-color: red;
+        
         border: none;
         display: inline-block;
         height: 20px;
@@ -13,7 +13,7 @@
       .Heart:before,
       .Heart:after {
         content: "";
-        background-color: red;
+        
         border-radius: 50%;
         height: 20px;
         position: absolute;
@@ -33,3 +33,23 @@
       .Heart:hover{
         cursor: pointer;
       }
+
+ .HeartFavorite{
+    background-color: red;
+ }
+
+ .HeartFavorite:before,
+ .HeartFavorite:after {
+   background-color: red;
+ }
+
+ .HeartUnFavorite{
+     background-color: wheat;
+     
+ }
+
+ .HeartUnFavorite:before,
+ .HeartUnFavorite:after {
+   background-color: wheat;
+  
+ }

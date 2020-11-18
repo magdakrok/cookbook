@@ -8,6 +8,11 @@ import Aux from '../../../hoc/Auxiliary/auxiliary';
 
 class Controls extends Component{
 
+    state = {
+        favorite: true
+    };
+
+    
     
 
     deleteHandler = (key,  e) => {
@@ -27,10 +32,19 @@ class Controls extends Component{
     }
 
     render(){
+
+        let checkFavorite;
+
+            if(this.state.favorite){
+                checkFavorite = "HeartFavorite"
+            }else{
+                checkFavorite = "HeartUnFavorite"
+            }
+        
         return (
             <Aux>
            <div className={classes.Control}>
-           <HeartButton>Favorite</HeartButton>
+           <HeartButton btnTypes={checkFavorite}></HeartButton>
            <Button btnTypes="Danger" clicked={(e) => this.deleteHandler(this.props.clicked,e)}>Usuń</Button>
            </div>
            </Aux>

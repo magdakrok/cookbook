@@ -12,7 +12,7 @@ const recipeButtons = (props) => {
             button = <HeartButton btnTypes={props.clicked}></HeartButton>
             break;
         case ('delete'):
-            button = <Button btnTypes="Danger" clicked={(e) => this.deleteHandler(this.props.clicked, e)}>Usuń</Button>;
+            button = <Button btnTypes="Danger" clicked={props.clicked}>Usuń</Button>;
         break;
     }
     return button;

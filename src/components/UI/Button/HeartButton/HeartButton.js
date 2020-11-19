@@ -5,10 +5,21 @@ import axios from '../../../../axios-instance';
 
 class heartButton extends Component {
 
+    state={
+        favorite: false
+    }
 
     changeFavoriteHandler = (key, e) => {
+        
+        if(this.props.clicked){
+          this.state.favorite = !this.state.favorite
+        }
+        else{
+            this.setState({favorite: true})
+        }
+
         axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
-            favorite: false
+            favorite: this.state.favorite
           
           }).then(res => {
             console.log(res);

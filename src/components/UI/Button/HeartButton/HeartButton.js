@@ -45,7 +45,7 @@ class heartButton extends Component {
 
    
     return(
-    <button 
+    <button className={classes.ButtonContainer}
         className = {[classes.Heart, classes[type]].join(' ')}
         onClick = {(e) => this.changeFavoriteHandler(this.props.clicked, e)}
         >

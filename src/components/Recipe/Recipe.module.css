@@ -1,28 +1,26 @@
 .Recipe{
     width: 100%;
     height: auto;
-  
     background-color: white;
     display: flex;
-  
+    flex-direction: column;
     justify-content: center;
     justify-items: center;
-    text-align: center;
-   
-   
+    align-items: center;
 }
 .RecipeAll{
     margin-top: 4rem;
-   margin-right: 2rem;
+    margin-right: 2rem;
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .Recipe:hover{
     background-color: salmon;
     cursor: pointer;
-    
 }
 
 /* .RecipePhotoContainer{
@@ -31,97 +29,72 @@
 
 .RecipePhoto{
     width: auto;
-    height: 10vh;
+    height: 20vh;
     margin: 1rem;
+    justify-self: center;
 }
  
 .RecipeTitle{
-    margin-top: 1rem;
    
-    width: 100%;
+   padding-left: 1rem;
+   width: 100%;;
     font-weight: 700;
-    font-size: large;
+    font-size: medium;
 }
 
 .RecipeHttp{
     text-decoration: none;
-
+    width: 100%;
 }
 
 .RecipeBottom{
-    width: 60vw;
-   
+    width: 100%;
+    margin-bottom: 1rem;
     display: flex;
-    flex-direction: column;
-    justify-content: start;;
+    flex-direction: row;
+    text-align: center;
 }
 
 .RecipeTop{
-    width: 40vw;
+    width: 100%;
     display: flex;
-    justify-content: start;;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 
-@media(min-width: 800px){
+@media(min-width: 500px){
     .Recipe{
-        width: 100%;
-        height: auto;
         margin: 1rem;
-       
-       
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        margin-bottom: 0;
+        flex-direction: row;
         text-align: center;
-        justify-items: center;
-       
-       
-    }
-    .RecipeAll{
-        margin-top: 4rem;
-        display: flex;
-        width: 100%;
-        margin-right:0;
         flex-wrap: wrap;
     }
-    
- 
-    
-    /* .RecipePhotoContainer{
-       width:  100%;
-    } */
-    
+
     .RecipePhoto{
-        width: auto ;
         height: 30vh;
         margin-top: 2rem;
-    }
+      }
      
     .RecipeTitle{
-      
         height: 5vh;
         width: 70%;
-        font-weight: 700;
         font-size: large;
     }
 
-    .RecipeBottom{
-        width: 100%;
-       
-        display: flex;
+      .RecipeBottom{
+        width: auto;
         flex-direction: column;
         justify-content:center;
         align-items: center;
     }
     
     .RecipeTop{
-        width: 100%;
-        display: flex;
+        width:auto;
         flex-direction: column;
-       align-items: center;
-       justify-items: center;
+        justify-items: center;
     }
 
     

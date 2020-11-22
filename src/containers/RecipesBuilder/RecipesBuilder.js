@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Recipe from '../../components/Recipe/Recipe';
 import Aux from '../../hoc/Auxiliary/auxiliary';
 import axios from '../../axios-instance';
-import Controls from '../../components/Recipe/Controls/Controls';
+import classes from './RecipeBuilder.module.css';
 import RecipeButtons from '../../components/Recipe/RecipeButtons/RecipeButtons';
 
 class RecipesBuilder extends Component{
@@ -48,14 +48,17 @@ render(){
                 return [...Array(this.state.cake[key])].map((cKey, i ) => {
                    return (
                        <Aux>
-                       <div key={cKey}>
+                       <div className={classes.RecipeBuilder} key={cKey}>
                             <Recipe title={cKey.title}
                                 photo={cKey.photo}
                                 http={cKey.http}
                                 favorite={cKey.favorite}>{this.props.children}
                             </Recipe>
-                            <RecipeButtons type="delete" clicked={key}></RecipeButtons>
+                            <div className={classes.RecipeButtonsContainer}>
+                            
                             <RecipeButtons type="favorite" statusType={cKey.favorite} clicked={key} ></RecipeButtons>
+                            <RecipeButtons type="delete" clicked={key}></RecipeButtons>
+                            </div>
                         </div>
                        </Aux>
                    )
@@ -67,7 +70,11 @@ render(){
         }
         return(
             <Aux>
-            {recipe}
+                <div className={classes.RecipeBuilderContainer}>
+                    
+                {recipe}
+                </div>
+            
             </Aux>
         );
     }

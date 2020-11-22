@@ -22,18 +22,18 @@ const recipe = (props) =>{
     }
 
 
-      let transformedData = (<div key={props.key}>
-                    <a href={cKey.http} className={classes.RecipeHttp}>
-                        <div className={classes.Recipe}>
+      let transformedData = (
+                   
+                        <div className={classes.Recipe} key={props.key}>
+                                 <a href={props.http} className={classes.RecipeHttp}>
                                 <div className={classes.RecipeTop}>
                                     <img src={checkPhoto(props.photo)} className={classes.RecipePhoto}></img>
                                 </div>
                                 <div className={classes.RecipeBottom}>
                                     <span className={classes.RecipeTitle}>{props.title}</span>
                                 </div>
-                        </div>
-                    </a>
-                    </div>)
+                            </a>
+                        </div>)
                       
                 
     console.log(data);
@@ -45,9 +45,9 @@ const recipe = (props) =>{
    
         return(
             <Aux>
-                <div className={classes.RecipeAll}>
+                
                     {transformedData}
-               </div>
+               
                
             </Aux>
         );

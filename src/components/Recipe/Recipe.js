@@ -36,7 +36,7 @@ const recipe = (props) =>{
                         </div>)
                       
                 
-    console.log(data);
+   
 
     // if(props.data === null){
     //     transformedData = 'nie masz zapisanych przepisów';

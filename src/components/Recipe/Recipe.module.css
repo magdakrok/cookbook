@@ -64,9 +64,10 @@
 }
 
 
-@media(min-width: 500px){
+@media(min-width: 800px){
     .Recipe{
-        margin: 1rem;
+        max-width: 100%;
+        padding: 1rem;
         margin-bottom: 0;
         flex-direction: row;
         text-align: center;
@@ -74,7 +75,7 @@
     }
 
     .RecipePhoto{
-        height: 30vh;
+        max-height: 30vh;
         margin-top: 2rem;
       }
      
@@ -92,7 +93,7 @@
     }
     
     .RecipeTop{
-        width:auto;
+        width:100%;
         flex-direction: column;
         justify-items: center;
     }

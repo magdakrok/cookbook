@@ -22,22 +22,22 @@ componentDidMount(){
        
     });
 
-    console.log(this.props.data)
+
 
     
 }
 
-//     componentDidUpdate(){
-//         console.log(this.props.children)
-//        if(!this.props){
-//         axios.get('https://cookbook-addec.firebaseio.com/cake.json')
-//     .then(response => {
-//         this.setState({cake: response.data});
-//         console.log(response);
+    componentDidUpdate(){
+        console.log(this.props)
+       if(!this.props){
+        axios.get('https://cookbook-addec.firebaseio.com/cake.json')
+    .then(response => {
+        this.setState({cake: response.data});
+        console.log(response);
 
-//     })
-// }
-// }
+    })
+}
+}
 
 render(){
     

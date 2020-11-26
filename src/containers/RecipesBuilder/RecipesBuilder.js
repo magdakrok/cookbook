@@ -17,42 +17,33 @@ class RecipesBuilder extends Component{
 
 
 componentDidMount(){
-    axios.get('https://cookbook-addec.firebaseio.com/cake.json')
-        .then(response => {
-            this.setState({cake: response.data});
-            console.log(response);
-        });
+   this.fetchDatahandler();
 }
     
-updateHandler = () =>{
-    this.setState({update: true});
-    console.log(this.state.update)
+fetchDatahandler= () =>{
+    axios.get('https://cookbook-addec.firebaseio.com/cake.json')
+    .then(response => {
+        this.setState({cake: response.data});
+        console.log(response);
+    });
 }
 
 
+deleteHandler = (key,  e) => {
+    axios.delete(`https://cookbook-addec.firebaseio.com/cake/${key}.json`
+    )
+    .then(res => {
+        console.log(res.data);
+        this.fetchDatahandler();
+        
+    })
+    .catch(e =>{
+        alert("error")
+    })
+   console.log(this.state.cake)
+}
 
-componentDidUpdate(prevState) {
-    // Typowy sposób użycia (nie zapomnij porównać właściwości):
-    if (this.state.update === prevState.update) {
-        axios.get('https://cookbook-addec.firebaseio.com/cake.json')
-        .then(response => {
-            this.setState({cake: response.data});
-            console.log(response);
-        });
-    }
-  }
 
-//     componentDidUpdate(){
-//         console.log(this.props)
-//        if(){
-//         axios.get('https://cookbook-addec.firebaseio.com/cake.json')
-//     .then(response => {
-//         this.setState({cake: response.data});
-//         console.log(response);
-
-//     })
-// }
-// }
 
 render(){
     
@@ -76,7 +67,7 @@ render(){
                             <div className={classes.RecipeButtonsContainer}>
                         
                             <HeartButton btnTypes={cKey.favorite} clicked = {key}></HeartButton>
-                            <DeleteButton btnTypes="Danger" clicked={key}>Usuń</DeleteButton>
+                            <DeleteButton btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</DeleteButton>
                             {/* <RecipeButtons type="favorite" statusType={cKey.favorite} clicked={key} ></RecipeButtons>
                             <RecipeButtons type="delete" clicked={key} updateHandler={()=>this.updateHandler()}></RecipeButtons> */}
                             </div>

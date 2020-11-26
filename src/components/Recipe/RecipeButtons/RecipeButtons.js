@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../../UI/Button/Button';
+import Button from '../../UI/Button/DeleteButton';
 import HeartButton from '../../UI/Button/HeartButton/HeartButton';
 
 const recipeButtons = (props) => {

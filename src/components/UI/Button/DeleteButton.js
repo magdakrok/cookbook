@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import classes from './Button.module.css';
+import classes from './DeleteButton.module.css';
 import axios from '../../../axios-instance';
 
 
-class Button extends Component{
+class DeleteButton extends Component{
 
     
 
@@ -27,7 +27,7 @@ class Button extends Component{
     render(){
         return(
     <button 
-        className = {[classes.Button, classes[this.props.btnTypes]].join(' ')}
+        className = {[classes.DeleteButton, classes[this.props.btnTypes]].join(' ')}
         onClick = {(e) => this.deleteHandler(this.props.clicked, e)}>{this.props.children}
     </button>
         )
@@ -35,4 +35,4 @@ class Button extends Component{
     
 };
 
-export default Button;
+export default DeleteButton;

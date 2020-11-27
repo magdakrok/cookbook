@@ -12,7 +12,9 @@ class RecipesBuilder extends Component{
 
     state = {
         cake: null,
-        update: false
+        update: false,
+        favorite: false
+        
     }
 
 
@@ -43,6 +45,36 @@ deleteHandler = (key,  e) => {
    console.log(this.state.cake)
 }
 
+changeFavoriteHandler = (key, recipeFavorite) => {
+        
+    let dataKey = recipeFavorite;
+
+    console.log(dataKey);
+
+    if(dataKey === false){
+     this.state.favorite = !this.state.favorite
+    }
+    else {
+        this.setState({favorite: true})
+    }
+
+
+    axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+        favorite: this.state.favorite
+      
+      }).then(res => {
+       
+        this.fetchDatahandler();
+    })
+    .catch(e =>{
+        alert("error")
+    })
+    
+
+  
+   
+
+}
 
 
 render(){
@@ -66,7 +98,7 @@ render(){
                             </Recipe>
                             <div className={classes.RecipeButtonsContainer}>
                         
-                            <HeartButton btnTypes={cKey.favorite} clicked = {key}></HeartButton>
+                            <HeartButton btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}></HeartButton>
                             <DeleteButton btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</DeleteButton>
                             {/* <RecipeButtons type="favorite" statusType={cKey.favorite} clicked={key} ></RecipeButtons>
                             <RecipeButtons type="delete" clicked={key} updateHandler={()=>this.updateHandler()}></RecipeButtons> */}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './DeleteButton.module.css';
-import axios from '../../../axios-instance';
+import axios from '../../../../axios-instance';
 
 
 const deleteButton = (props) =>(

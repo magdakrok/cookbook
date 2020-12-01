@@ -3,9 +3,9 @@ import Recipe from '../../components/Recipe/Recipe';
 import Aux from '../../hoc/Auxiliary/auxiliary';
 import axios from '../../axios-instance';
 import classes from './RecipeBuilder.module.css';
-import RecipeButtons from '../../components/Recipe/RecipeButtons/RecipeButtons';
-import DeleteButton from '../../components/UI/Button/DeleteButton';
-import HeartButton from '../../components/UI/Button/HeartButton/HeartButton';
+
+import DeleteButton from '../../components/UI/Buttons/DeleteButton/DeleteButton';
+import HeartButton from '../../components/UI/Buttons/HeartButton/HeartButton';
 
 
 class RecipesBuilder extends Component{
@@ -100,6 +100,7 @@ render(){
                         
                             <HeartButton btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}></HeartButton>
                             <DeleteButton btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</DeleteButton>
+                            {/* <NotesButton></NotesButton> */}
                             {/* <RecipeButtons type="favorite" statusType={cKey.favorite} clicked={key} ></RecipeButtons>
                             <RecipeButtons type="delete" clicked={key} updateHandler={()=>this.updateHandler()}></RecipeButtons> */}
                             </div>

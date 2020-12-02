@@ -45,44 +45,35 @@ deleteHandler = (key,  e) => {
    console.log(this.state.cake)
 }
 
-changeFavoriteHandler = (key, recipeFavorite) => {
+
+changeFavoriteHandler = (key,recipeFavorite) => {
         
-    let dataKey = recipeFavorite;
-
-    console.log(dataKey);
-
-    if(dataKey === false){
-     this.state.favorite = !this.state.favorite
-    }
-    else {
+    if(recipeFavorite === false){
         this.setState({favorite: true})
+       
+    }else{
+        this.setState({favorite: false})
     }
 
-
-    axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+    
+    setTimeout(()=>axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
         favorite: this.state.favorite
-      
       }).then(res => {
-       
-        this.fetchDatahandler();
+       this.fetchDatahandler();
     })
     .catch(e =>{
         alert("error")
-    })
-    
+    }), 500);
 
-  
-   
 
 }
+
 
 
 render(){
     
     let recipe;
     
-    let updateHandler;
-  
     
 
         if(this.state.cake){

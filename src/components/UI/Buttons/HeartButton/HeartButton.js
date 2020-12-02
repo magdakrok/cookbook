@@ -18,12 +18,13 @@ const heartButton = (props) => {
 
    
     return(
-    <button className={classes.ButtonContainer}
-        className = {[classes.Heart, classes[type]].join(' ')}
+        <div className={classes.ButtonContainer}>
+    <button className = {[classes.Heart, classes[type]].join(' ')}
         onClick = {props.setFavorite}
         >
         {props.children}
     </button>
+    </div>
     );
     
 };

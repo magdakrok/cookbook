@@ -8,6 +8,7 @@ import DeleteButton from '../../components/UI/Buttons/DeleteButton/DeleteButton'
 import HeartButton from '../../components/UI/Buttons/HeartButton/HeartButton';
 import RecipeNotes from '../../components/Recipe/RecipeNotes/RecipeNotes';
 import Modal from '../../components/UI/Modal/Modal';
+import NotesButton from '../../components/UI/Buttons/NotesButton/NotesButton';
 
 
 class RecipesBuilder extends Component{
@@ -73,6 +74,7 @@ changeFavoriteHandler = (key,recipeFavorite) => {
 
 notesHandler = () =>{
     this.setState({notesShow: true})
+    console.log("true")
 }
 
 
@@ -98,10 +100,10 @@ render(){
                         
                             <HeartButton btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}></HeartButton>
                             <DeleteButton btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</DeleteButton>
-                            {/* <NotesButton></NotesButton> */}
+                            <NotesButton notes={()=>this.notesHandler()}></NotesButton>
                             <Modal>
                             <RecipeNotes></RecipeNotes>
-                           
+                            
                             </Modal>
                             {/* <RecipeButtons type="favorite" statusType={cKey.favorite} clicked={key} ></RecipeButtons>
                             <RecipeButtons type="delete" clicked={key} updateHandler={()=>this.updateHandler()}></RecipeButtons> */}

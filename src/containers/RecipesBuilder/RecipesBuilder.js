@@ -77,6 +77,11 @@ notesHandler = () =>{
     console.log("true")
 }
 
+notesCancelHandler = () =>{
+    this.setState({notesShow: false})
+    console.log("false")
+}
+
 
 
 render(){
@@ -101,7 +106,8 @@ render(){
                             <HeartButton btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}></HeartButton>
                             <DeleteButton btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</DeleteButton>
                             <NotesButton notes={()=>this.notesHandler()}></NotesButton>
-                            <Modal>
+
+                            <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>
                             <RecipeNotes></RecipeNotes>
                             
                             </Modal>

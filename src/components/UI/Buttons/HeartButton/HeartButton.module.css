@@ -4,10 +4,9 @@
    margin-top:0;
  }
 
- .ButtonContainer{
-   border-bottom: none;
- }
- 
+ .ButtonContainer:focus{
+  outline: none;
+}
  .Heart{
         
         border: none;

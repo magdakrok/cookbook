@@ -9,6 +9,7 @@ import HeartButton from '../../components/UI/Buttons/HeartButton/HeartButton';
 import RecipeNotes from '../../components/Recipe/RecipeNotes/RecipeNotes';
 import Modal from '../../components/UI/Modal/Modal';
 import NotesButton from '../../components/UI/Buttons/NotesButton/NotesButton';
+import ButtonsControl from '../../components/UI/Buttons/ButtonsControl/ButtonsControl';
 
 
 class RecipesBuilder extends Component{
@@ -103,8 +104,8 @@ render(){
                             </Recipe>
                             <div className={classes.RecipeButtonsContainer}>
                         
-                            <HeartButton btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}></HeartButton>
-                            <DeleteButton btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</DeleteButton>
+                            <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
+                            <ButtonsControl type="Danger" btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
                             <NotesButton notes={()=>this.notesHandler()}></NotesButton>
 
                             <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>

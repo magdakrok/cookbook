@@ -8,12 +8,13 @@ class RecipeNotes extends Component{
         return(
             <Aux>
             <div className={classes.RecipeNotes}>
-                <p>Dodaj swoją notatkę:</p>
-                <input type="text"/>
-            
-            <p>Zapisz</p>
-            <p>Edytuj</p>
-            <p>Usuń</p>
+                
+                <input type="text" placeholder="Dodaj swoją notatkę"/>
+            <div>
+                <p>Zapisz</p>
+                <p>Edytuj</p>
+                <p>Usuń</p>
+            </div>
             </div>
             </Aux>
         );

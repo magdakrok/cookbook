@@ -8,4 +8,23 @@
     background-color: white;
     box-shadow: 1px 1px 1px salmon;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
+
+input{
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 2px solid #eee;
+    background-color: white;
+    box-shadow: 0 0 15px 4px rgba(0,0, 0,0.06);
+    border-radius: 5px;
+    height: 5rem;;
+    
+}
+input:focus{
+    outline: none;
+}
+

@@ -1,11 +1,12 @@
 import React from 'react';
 
 import classes from './NotesButton.module.css';
+import NotesImg from '../../../../assets/images/notes.jpg';
 
 const NotesButton = (props) => {
     return(
         <button className={classes.NotesButton}
-        onClick={props.notes}>Dodaj notatkę</button>
+        onClick={props.notes}><img src={NotesImg} alt="Notes Image" className={classes.NotesImg}></img></button>
     )
 }
 

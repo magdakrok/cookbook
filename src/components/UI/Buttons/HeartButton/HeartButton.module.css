@@ -43,6 +43,10 @@
         cursor: pointer;
       }
 
+      .Heart:focus{
+        outline: none;
+    }
+
  .HeartFavorite{
     background-color: red;
  }

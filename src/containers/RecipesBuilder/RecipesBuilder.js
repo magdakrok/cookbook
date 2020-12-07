@@ -109,7 +109,7 @@ render(){
                             <NotesButton notes={()=>this.notesHandler()}></NotesButton>
 
                             <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>
-                            <RecipeNotes></RecipeNotes>
+                            <RecipeNotes recipeKey={key}>{this.props.children}</RecipeNotes>
                             
                             </Modal>
                             {/* <RecipeButtons type="favorite" statusType={cKey.favorite} clicked={key} ></RecipeButtons>

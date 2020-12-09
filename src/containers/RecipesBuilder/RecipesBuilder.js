@@ -19,7 +19,9 @@ class RecipesBuilder extends Component{
         update: false,
         favorite: false,
         notesShow: false,
-        notes: null
+        notes: null,
+        key: null
+        
         
     }
 
@@ -74,9 +76,11 @@ changeFavoriteHandler = (key,recipeFavorite) => {
 
 }
 
-notesHandler = (cKeyNotes) =>{
+notesHandler = (cKey, notes) =>{
     this.setState({notesShow: true})
-    this.setState({notes: cKeyNotes})
+    this.setState({key: cKey})
+    this.setState({notes: notes})
+    
 }
 
 notesCancelHandler = () =>{
@@ -89,8 +93,9 @@ notesCancelHandler = () =>{
 render(){
     
     let recipe;
-    
-    recipe = <RecipeNotes notesToRecipe={this.state.notes}></RecipeNotes>
+    console.log(this.state.key)
+  
+    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes}></RecipeNotes>
    
 
         if(this.state.cake){
@@ -109,7 +114,7 @@ render(){
                         
                             <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
                             <ButtonsControl type="Danger" btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
-                            <ButtonsControl type="notes" notes={()=>this.notesHandler(cKey.notes)}></ButtonsControl>
+                            <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)}></ButtonsControl>
                            
                            
                             <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>

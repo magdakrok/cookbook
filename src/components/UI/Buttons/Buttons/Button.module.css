@@ -1,4 +1,4 @@
-.DeleteButton{
+.Button{
     width: 10vw;;
     background-color:transparent;
     border: none;
@@ -28,7 +28,7 @@
 }
 
 @media(min-width: 500px){
-    .DeleteButton{
+    .Button{
         padding: 1rem;
         width: 10vw;
     }

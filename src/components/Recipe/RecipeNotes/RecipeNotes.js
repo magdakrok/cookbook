@@ -7,7 +7,9 @@ import axios from '../../../axios-instance';
 
 class RecipeNotes extends Component{
 
-  
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.show !== this.props.show;
+    }
     
   
     deleteHandler = (key) => {
@@ -33,7 +35,7 @@ class RecipeNotes extends Component{
             <div className={classes.RecipeNotes}>
               
             <div>
-                    <p>{this.props.notes}, {this.props.keyId}</p>
+                    <p>{this.props.notes}</p>
                 </div>
                 <input type="text" placeholder="Dodaj swoją notatkę"/>
                

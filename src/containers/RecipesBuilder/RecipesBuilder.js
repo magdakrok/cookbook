@@ -4,7 +4,7 @@ import Aux from '../../hoc/Auxiliary/auxiliary';
 import axios from '../../axios-instance';
 import classes from './RecipeBuilder.module.css';
 
-import DeleteButton from '../../components/UI/Buttons/DeleteButton/DeleteButton';
+import DeleteButton from '../../components/UI/Buttons/Buttons/Button';
 import HeartButton from '../../components/UI/Buttons/HeartButton/HeartButton';
 import RecipeNotes from '../../components/Recipe/RecipeNotes/RecipeNotes';
 import Modal from '../../components/UI/Modal/Modal';
@@ -95,7 +95,7 @@ render(){
     let recipe;
     console.log(this.state.key)
   
-    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes}></RecipeNotes>
+    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes} show={this.state.show}></RecipeNotes>
    
 
         if(this.state.cake){
@@ -113,7 +113,7 @@ render(){
                             <div className={classes.RecipeButtonsContainer}>
                         
                             <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
-                            <ButtonsControl type="Danger" btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
+                            <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
                             <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)}></ButtonsControl>
                            
                            

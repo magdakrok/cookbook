@@ -1,9 +1,10 @@
 import React from 'react';
 import HeartButton from '../HeartButton/HeartButton';
-import DeleteButton from '../DeleteButton/DeleteButton';
+import DeleteButton from '../Buttons/Button';
 import Aux from '../../../../hoc/Auxiliary/auxiliary';
 import classes from './ButtonsControl.module.css';
 import NotesButton from '../NotesButton/NotesButton';
+import Button from '../Buttons/Button';
 
 const buttonsControl = (props) =>{
    
@@ -15,7 +16,7 @@ const buttonsControl = (props) =>{
   
   }else if(props.type === "Danger"){
     console.log(props.btnTypes)
-   buttonType = ( <DeleteButton btnTypes={props.btnTypes} delete={props.delete}>Usuń</DeleteButton>)
+   buttonType = ( <Button btnTypes={props.btnTypes} action={props.action}>Usuń</Button>)
   } else if(props.type ==="notes"){
     buttonType = (<NotesButton notes={props.notes} >  </NotesButton>)
   }

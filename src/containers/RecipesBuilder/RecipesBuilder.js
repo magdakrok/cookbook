@@ -18,7 +18,8 @@ class RecipesBuilder extends Component{
         cake: null,
         update: false,
         favorite: false,
-        notesShow: false
+        notesShow: false,
+        notes: null
         
     }
 
@@ -73,14 +74,14 @@ changeFavoriteHandler = (key,recipeFavorite) => {
 
 }
 
-notesHandler = () =>{
+notesHandler = (cKeyNotes) =>{
     this.setState({notesShow: true})
-    console.log("true")
+    this.setState({notes: cKeyNotes})
 }
 
 notesCancelHandler = () =>{
     this.setState({notesShow: false})
-    console.log("false")
+    
 }
 
 
@@ -89,7 +90,8 @@ render(){
     
     let recipe;
     
-    
+    recipe = <RecipeNotes notesToRecipe={this.state.notes}></RecipeNotes>
+   
 
         if(this.state.cake){
           recipe = (Object.keys(this.state.cake).map(key => {
@@ -100,20 +102,21 @@ render(){
                             <Recipe title={cKey.title}
                                 photo={cKey.photo}
                                 http={cKey.http}
+                                notes={cKey.notes}
                                 favorite={cKey.favorite}>{this.props.children}
                             </Recipe>
                             <div className={classes.RecipeButtonsContainer}>
                         
                             <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
                             <ButtonsControl type="Danger" btnTypes="Danger" delete = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
-                            <NotesButton notes={()=>this.notesHandler()}></NotesButton>
-
+                            <ButtonsControl type="notes" notes={()=>this.notesHandler(cKey.notes)}></ButtonsControl>
+                           
+                           
                             <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>
-                            <RecipeNotes recipeKey={key}>{this.props.children}</RecipeNotes>
-                            
+                                {recipe}
                             </Modal>
-                            {/* <RecipeButtons type="favorite" statusType={cKey.favorite} clicked={key} ></RecipeButtons>
-                            <RecipeButtons type="delete" clicked={key} updateHandler={()=>this.updateHandler()}></RecipeButtons> */}
+                           
+                          
                             </div>
                         </div>
                        </Aux>

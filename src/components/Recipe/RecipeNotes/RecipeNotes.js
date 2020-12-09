@@ -22,14 +22,19 @@ class RecipeNotes extends Component{
     //    console.log(this.state.cake)
     }
     render(){
+
+        
         return(
             <Aux>
             <div className={classes.RecipeNotes}>
-                
-                <input type="text" placeholder="Dodaj swoją notatkę"/>
+              
             <div>
-                <p>Zapisz</p>
-                <p>Edytuj</p>
+                    <p>{this.props.notesToRecipe}</p>
+                </div>
+                <input type="text" placeholder="Dodaj swoją notatkę"/>
+               
+            <div>
+               
                 <ButtonsControl type="Danger" btnTypes="Danger" delete = {() => this.deleteHandler(this.props.recipeKey)}>Usuń</ButtonsControl>
             </div>
             </div>

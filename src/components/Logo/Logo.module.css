@@ -1,5 +1,5 @@
 .Logo{
-    background-color: salmon;
+    background-color: black;
     padding: 8px;
     height: 100%;
  
@@ -8,13 +8,11 @@
 .Logo img{
     height: 100%;
 }
-
-@media(min-width: 500px){
+ /* @media(min-width: 500px){
     .Logo{
         position: absolute;
         top: 0rem;
         left: 2rem;
-    }
-}
-
+    } 
+}  */
 

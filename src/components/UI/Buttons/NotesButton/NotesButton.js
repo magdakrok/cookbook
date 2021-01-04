@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './NotesButton.module.css';
-import NotesImg from '../../../../assets/images/notes.jpg';
+import NotesImg from '../../../../assets/images/notes2.jpg';
 
 const NotesButton = (props) => {
     return(

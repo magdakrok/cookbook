@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: salmon;
+    background-color: black;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -18,8 +18,8 @@
     height: 100%;
 }
 
-@media(max-width: 499px){
+/* @media(max-width: 499px){
     .DesktopOnly{
         display: none;
     }
-}
+} */

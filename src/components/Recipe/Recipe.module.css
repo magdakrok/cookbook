@@ -19,7 +19,7 @@
 }
 
 .Recipe:hover{
-    background-color: salmon;
+    background-color: rgb(192, 192, 192);
     cursor: pointer;
 }
 

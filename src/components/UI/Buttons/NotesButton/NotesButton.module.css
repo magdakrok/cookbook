@@ -21,7 +21,7 @@ content: "Dodaj notatkę";
 position: absolute;
 width: 5rem;
 height: 2rem;
-background-color:salmon;
+background-color: rgb(192,192,192);
 color: white;
 border-radius: 30px 10px 10px 30px;
 

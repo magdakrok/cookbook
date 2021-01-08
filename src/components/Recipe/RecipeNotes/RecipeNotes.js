@@ -3,52 +3,54 @@ import Aux from '../../../hoc/Auxiliary/auxiliary';
 import classes from './RecipeNotes.module.css';
 import ButtonsControl from '../../UI/Buttons/ButtonsControl/ButtonsControl';
 import axios from '../../../axios-instance';
+import buttonsControl from '../../UI/Buttons/ButtonsControl/ButtonsControl';
 
 
 class RecipeNotes extends Component{
 
-
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
+   
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {value: '',
+    //                     };
     
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
+    //     this.handleChange = this.handleChange.bind(this);
+    //     this.handleSubmit = this.handleSubmit.bind(this);
+    //   }
 
-    shouldComponentUpdate(nextProps, nextState){
-        return nextProps.show !== this.props.show;
-    }
+    
     
   
     deleteHandler = (key) => {
         console.log("deleted" + key)
+        
         axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
-            notes: null
+            notes: ""
         })
         .then(res => {
+            this.setState({notes: ""})
            alert("Usunięto")
             
         })
         .catch(e =>{
             alert("error")
         })
-      
+        // event.preventDefault();
     }
 
    
     
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
+    //   handleChange(event) {
+    //     this.setState({value: event.target.value});
+    //   }
     
-      handleSubmit(event) {
-        alert('Podano następujące imię: ' + this.state.value);
-        event.preventDefault();
-      }
+    //   handleSubmit(event) {
+    //     alert('Podano następujące imię: ' + this.state.value);
+    //     event.preventDefault();
+    //   }
     render(){
    
-        
+        console.log(this.props.notes)
         
         return(
             <Aux>
@@ -56,15 +58,15 @@ class RecipeNotes extends Component{
               
             <div>
                     <p>{this.props.notes}</p>
-                    <form onSubmit={this.handleSubmit}>
-                         <label>
-                            
-                        <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Dodaj notatkę"/>
-                        </label>
-                        {/* <input type="submit" value="Wyślij" /> */}
                     
-                <ButtonsControl type="Danger" btnTypes="Danger" delete = {() => this.deleteHandler(this.props.keyId)}>Usuń</ButtonsControl>
-                </form>
+                         {/* <label>
+                          
+                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                        </label> */}
+                        {/* <input type="submit" value="Wyślij" /> */}
+                <ButtonsControl type="Save" btnTypes="Save" onSubmit={this.handleSubmit} ></ButtonsControl>
+                <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(this.props.keyId)}>Usuń</ButtonsControl>
+               
             </div>
             </div>
             </Aux>

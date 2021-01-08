@@ -1,0 +1,35 @@
+.Button{
+    width: 10vw;;
+    background-color:transparent;
+    border: none;
+    color:red;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    width: 5rem;;
+    padding: 0.5rem;
+ 
+    font-weight: bold;
+   
+    
+}
+
+.DeleteButton:first-of-type{
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.Success{
+    color: green;
+}
+
+.Danger{
+    color: red;
+}
+
+@media(min-width: 500px){
+    .Button{
+        padding: 1rem;
+        width: 10vw;
+    }
+}

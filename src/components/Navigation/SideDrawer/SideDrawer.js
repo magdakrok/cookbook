@@ -22,7 +22,7 @@ const sideDrawer = (props) => {
             <nav>
                 <NavigationItems />
             </nav>
-            <Logo  height="11%"/>
+           
         </div>
         </Aux>
     );

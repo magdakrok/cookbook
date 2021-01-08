@@ -9,15 +9,15 @@ import buttonsControl from '../../UI/Buttons/ButtonsControl/ButtonsControl';
 class RecipeNotes extends Component{
 
    
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {value: '',
-    //                     };
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
     
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.handleSubmit = this.handleSubmit.bind(this);
-    //   }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
 
+    
     
     
   
@@ -40,14 +40,15 @@ class RecipeNotes extends Component{
 
    
     
-    //   handleChange(event) {
-    //     this.setState({value: event.target.value});
-    //   }
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
     
-    //   handleSubmit(event) {
-    //     alert('Podano następujące imię: ' + this.state.value);
-    //     event.preventDefault();
-    //   }
+      handleSubmit(key, event) {
+
+        alert('Podano następujące imię: ' + this.state.value);
+       
+      }
     render(){
    
         console.log(this.props.notes)
@@ -59,12 +60,12 @@ class RecipeNotes extends Component{
             <div>
                     <p>{this.props.notes}</p>
                     
-                         {/* <label>
+                         <label>
                           
                         <input type="text" value={this.state.value} onChange={this.handleChange} />
-                        </label> */}
+                        </label>
                         {/* <input type="submit" value="Wyślij" /> */}
-                <ButtonsControl type="Save" btnTypes="Save" onSubmit={this.handleSubmit} ></ButtonsControl>
+                <ButtonsControl type="Save" btnTypes="Save" action={this.handleSubmit} ></ButtonsControl>
                 <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(this.props.keyId)}>Usuń</ButtonsControl>
                
             </div>

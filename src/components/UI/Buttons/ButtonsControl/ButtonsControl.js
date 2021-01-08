@@ -21,7 +21,7 @@ const buttonsControl = (props) =>{
   } else if(props.type ==="notes"){
     buttonType = (<NotesButton notes={props.notes} >  </NotesButton>)
   }else if(props.type === "Save"){
-    buttonType =(<SaveButton btnTypes={props.btnTypes} action={props.action}>Zapisz</SaveButton>)
+    buttonType =(<Button btnTypes={props.btnTypes} action={props.action}>Zapisz</Button>)
   }
 
   

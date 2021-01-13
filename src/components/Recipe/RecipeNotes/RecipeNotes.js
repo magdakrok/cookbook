@@ -8,16 +8,34 @@ import buttonsControl from '../../UI/Buttons/ButtonsControl/ButtonsControl';
 
 class RecipeNotes extends Component{
 
+
+  
    
     constructor(props) {
         super(props);
-        this.state = {value: ''};
-    
+        this.state = {value: '',
+                      update: false,
+                     };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
 
-    
+      
+  
+
+      
+      fetchNotesHandler = (key) =>{
+        axios.get(`https://cookbook-addec.firebaseio.com/cake/${key}/notes.json`)
+        .then(response => {
+            this.setState({value: response.data.notes});
+            console.log(response);
+        });
+    }
+      
+ 
+    componentDidUpdate(){
+
+    }
     
     
   
@@ -29,7 +47,8 @@ class RecipeNotes extends Component{
         })
         .then(res => {
             this.setState({notes: ""})
-           alert("Usunięto")
+           // this.fetchNotesHandler(key);
+          //  alert("Usunięto")
             
         })
         .catch(e =>{
@@ -40,29 +59,37 @@ class RecipeNotes extends Component{
 
    
     
-      handleChange(event) {
+      handleChange(event){
         this.setState({value: event.target.value});
       }
     
       handleSubmit(key, event) {
-
         alert('Podano następujące imię: ' + this.state.value);
+        this.setState({update: true})
        
       }
+
+
     render(){
-   
-        console.log(this.props.notes)
+       
+    let notes;
+    if(this.state.value === ""){
+      notes = this.props.notes
+    }else {
+      notes = this.state.value
+    }
+        console.log("show" +this.props.show)
         
         return(
             <Aux>
             <div className={classes.RecipeNotes}>
               
             <div>
-                    <p>{this.props.notes}</p>
+                    <p>{notes}</p>
                     
                          <label>
                           
-                        <input type="text" value={this.state.value} onChange={this.handleChange} />
+                        <input type="text" placeholder="Dodaj notatkę" onChange={this.handleChange} />
                         </label>
                         {/* <input type="submit" value="Wyślij" /> */}
                 <ButtonsControl type="Save" btnTypes="Save" action={this.handleSubmit} ></ButtonsControl>

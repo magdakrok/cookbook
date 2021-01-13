@@ -95,7 +95,7 @@ render(){
     let recipe;
     console.log(this.state.key)
   
-    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes} show={this.state.show}></RecipeNotes>
+    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes} show={this.state.notesShow}></RecipeNotes>
    
 
         if(this.state.cake){

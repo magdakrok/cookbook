@@ -10,6 +10,9 @@ class RecipeNotes extends Component{
 
 
   
+
+   
+  
    
     constructor(props) {
         super(props);
@@ -18,43 +21,56 @@ class RecipeNotes extends Component{
                      };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        console.log("update" + this.state.update)
       }
 
-      
-  
+ 
 
       
       fetchNotesHandler = (key) =>{
         axios.get(`https://cookbook-addec.firebaseio.com/cake/${key}/notes.json`)
         .then(response => {
-            this.setState({value: response.data.notes});
+            this.setState({value: response.data});
             console.log(response);
         });
     }
+
+    changeUpdateHandler = (string, updateState) => {
+      console.log(`initial update ${this.state.update}`)
+      if(this.state.update === false){
+        this.setState({update: true})
+      }else if(this.state.update === true){
+        this.setState({update: false})
+      }
+      // this.setState({update: !updateState});
+      setTimeout(()=> 
+      console.log(`actual state: ${string} ${this.state.update}`)
+      , 500);
+    }
       
  
-    componentDidUpdate(){
-
-    }
-    
-    
   
     deleteHandler = (key) => {
-        console.log("deleted" + key)
-        
-        axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+        console.log("deleted" + true); 
+        this.changeUpdateHandler("pierwsza",true);
+        setTimeout(()=>axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
             notes: ""
         })
         .then(res => {
-            this.setState({notes: ""})
-           // this.fetchNotesHandler(key);
-          //  alert("Usunięto")
+          
+          alert("Usunięto")
+          // this.changeUpdateHandler("druga", false);
+          console.log("update: " + this.state.update)
+         
             
         })
         .catch(e =>{
             alert("error")
-        })
-        // event.preventDefault();
+        }),500);
+        
+        
+        console.log("up" +this.state.update)
+        
     }
 
    
@@ -65,7 +81,9 @@ class RecipeNotes extends Component{
     
       handleSubmit(key, event) {
         alert('Podano następujące imię: ' + this.state.value);
-        this.setState({update: true})
+     
+      
+        
        
       }
 
@@ -73,27 +91,38 @@ class RecipeNotes extends Component{
     render(){
        
     let notes;
-    if(this.state.value === ""){
+
+  
+    if(this.state.update === true){
+      notes = ""
+    }else if(this.state.value === ""){
       notes = this.props.notes
-    }else {
+    }else if((this.state.value !== "") && (this.props.notes !== "")){
+      notes = this.props.notes + this.state.value
+    }else if(this.props.notes === ""){
       notes = this.state.value
     }
-        console.log("show" +this.props.show)
+  
+    
+
+       
         
         return(
             <Aux>
             <div className={classes.RecipeNotes}>
               
             <div>
-                    <p>{notes}</p>
-                    
-                         <label>
-                          
-                        <input type="text" placeholder="Dodaj notatkę" onChange={this.handleChange} />
-                        </label>
+            <p>{notes}</p> 
+           
+                 
+                        
+                      <input type="text" placeholder="Dodaj notatkę" onChange={this.handleChange} />
+               
+                   
+                       
                         {/* <input type="submit" value="Wyślij" /> */}
                 <ButtonsControl type="Save" btnTypes="Save" action={this.handleSubmit} ></ButtonsControl>
-                <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(this.props.keyId)}>Usuń</ButtonsControl>
+                <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(this.props.keyId)} >Usuń</ButtonsControl>
                
             </div>
             </div>

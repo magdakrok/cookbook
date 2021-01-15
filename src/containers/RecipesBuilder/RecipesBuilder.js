@@ -95,7 +95,7 @@ render(){
     let recipe;
     console.log(this.state.key)
   
-    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes} show={this.state.notesShow}></RecipeNotes>
+    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes} show={this.state.notesShow} modalClosed={this.notesCancelHandler}></RecipeNotes>
    
 
         if(this.state.cake){
@@ -114,7 +114,7 @@ render(){
                         
                             <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
                             <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
-                            <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)}></ButtonsControl>
+                            <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)} ></ButtonsControl>
                            
                            
                             <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>

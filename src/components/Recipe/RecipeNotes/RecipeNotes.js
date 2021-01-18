@@ -35,12 +35,12 @@ class RecipeNotes extends Component{
     changeUpdateHandler = (string, updateState) => {
       console.log(`initial update ${this.state.update}`)
 
-      if(this.state.update === false){
-        this.setState({update: true})
-      }else if(this.state.update === true){
-        this.setState({update: false})
-      }
-      // this.setState({update: !updateState});
+      // if(this.state.update === false){
+      //   this.setState({update: true})
+      // }else if(this.state.update === true){
+      //   this.setState({update: false})
+      // }
+      this.setState({update: updateState});
       setTimeout(()=> 
       console.log(`actual state: ${string} ${this.state.update}`)
       , 500);
@@ -51,15 +51,15 @@ class RecipeNotes extends Component{
     deleteHandler = (key) => {
         console.log("deleted" + true); 
         this.setState({key: key})
-        this.changeUpdateHandler("pierwsza",true);
+        // this.changeUpdateHandler("pierwsza",true);
         // 
-        axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+        setTimeout(() =>axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
             notes: ""
         })
         .then(res => {
           
           alert("Usunięto")
-          // this.changeUpdateHandler("druga", false);
+          
           console.log("update: " + this.state.update)
          
             
@@ -67,7 +67,7 @@ class RecipeNotes extends Component{
         .catch(e =>{
             alert("error")
         })
-        // ,500);
+        ,500);
         
         
         console.log("up" +this.state.update)
@@ -95,14 +95,15 @@ class RecipeNotes extends Component{
     let propsNotes=this.props.notes;
     let propsKey = this.props.keyId;
 
-     if(this.state.value === ""){
+    if(this.state.key === propsKey){
+      notes=""
+    }
+    else if(this.state.value === ""){
       notes = propsNotes;
     }else if((this.state.value !== "") && (this.propsNotes !== "")){
       notes = propsNotes + this.state.value
-    }else if(propsNotes === ""){
+    }else if((propsNotes === "") || (this.props.key !== this.propsKey)){
       notes = this.state.value
-    }else if((this.state.update === true) && (this.state.key === this.propsKey)){
-      notes=""
     }
   
     

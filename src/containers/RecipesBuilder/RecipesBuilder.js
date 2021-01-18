@@ -84,7 +84,8 @@ notesHandler = (cKey, notes) =>{
 }
 
 notesCancelHandler = () =>{
-    this.setState({notesShow: false})
+    this.setState({notesShow: false});
+    this.fetchDatahandler();
     
 }
 
@@ -93,7 +94,7 @@ notesCancelHandler = () =>{
 render(){
     
     let recipe;
-    console.log(this.state.key)
+    // console.log(this.state.key)
   
     recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes} show={this.state.notesShow} modalClosed={this.notesCancelHandler}></RecipeNotes>
    

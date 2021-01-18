@@ -9,15 +9,12 @@ import buttonsControl from '../../UI/Buttons/ButtonsControl/ButtonsControl';
 class RecipeNotes extends Component{
 
 
-  
-
-   
-  
-   
     constructor(props) {
         super(props);
         this.state = {value: '',
+                      notes: '',
                       update: false,
+                      key: ''
                      };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,16 +24,17 @@ class RecipeNotes extends Component{
  
 
       
-      fetchNotesHandler = (key) =>{
-        axios.get(`https://cookbook-addec.firebaseio.com/cake/${key}/notes.json`)
-        .then(response => {
-            this.setState({value: response.data});
-            console.log(response);
-        });
-    }
+    //   fetchNotesHandler = (key) =>{
+    //     axios.get(`https://cookbook-addec.firebaseio.com/cake/${key}/notes.json`)
+    //     .then(response => {
+    //         this.setState({value: response.data});
+    //         console.log(response);
+    //     });
+    // }
 
     changeUpdateHandler = (string, updateState) => {
       console.log(`initial update ${this.state.update}`)
+
       if(this.state.update === false){
         this.setState({update: true})
       }else if(this.state.update === true){
@@ -52,8 +50,10 @@ class RecipeNotes extends Component{
   
     deleteHandler = (key) => {
         console.log("deleted" + true); 
+        this.setState({key: key})
         this.changeUpdateHandler("pierwsza",true);
-        setTimeout(()=>axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+        // 
+        axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
             notes: ""
         })
         .then(res => {
@@ -66,7 +66,8 @@ class RecipeNotes extends Component{
         })
         .catch(e =>{
             alert("error")
-        }),500);
+        })
+        // ,500);
         
         
         console.log("up" +this.state.update)
@@ -91,16 +92,17 @@ class RecipeNotes extends Component{
     render(){
        
     let notes;
+    let propsNotes=this.props.notes;
+    let propsKey = this.props.keyId;
 
-  
-    if(this.state.update === true){
-      notes = ""
-    }else if(this.state.value === ""){
-      notes = this.props.notes
-    }else if((this.state.value !== "") && (this.props.notes !== "")){
-      notes = this.props.notes + this.state.value
-    }else if(this.props.notes === ""){
+     if(this.state.value === ""){
+      notes = propsNotes;
+    }else if((this.state.value !== "") && (this.propsNotes !== "")){
+      notes = propsNotes + this.state.value
+    }else if(propsNotes === ""){
       notes = this.state.value
+    }else if((this.state.update === true) && (this.state.key === this.propsKey)){
+      notes=""
     }
   
     
@@ -113,14 +115,7 @@ class RecipeNotes extends Component{
               
             <div>
             <p>{notes}</p> 
-           
-                 
-                        
-                      <input type="text" placeholder="Dodaj notatkę" onChange={this.handleChange} />
-               
-                   
-                       
-                        {/* <input type="submit" value="Wyślij" /> */}
+                <input type="text" placeholder="Dodaj notatkę" onChange={this.handleChange} />
                 <ButtonsControl type="Save" btnTypes="Save" action={this.handleSubmit} ></ButtonsControl>
                 <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(this.props.keyId)} >Usuń</ButtonsControl>
                

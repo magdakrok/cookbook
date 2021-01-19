@@ -85,7 +85,7 @@ notesHandler = (cKey, notes) =>{
 
 notesCancelHandler = () =>{
     this.setState({notesShow: false});
-    // this.fetchDatahandler();
+    this.fetchDatahandler();
     
 }
 

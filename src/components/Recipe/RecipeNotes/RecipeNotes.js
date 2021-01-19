@@ -16,48 +16,34 @@ class RecipeNotes extends Component{
                       update: false,
                       key: ''
                      };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeHandler = this.changeHandler.bind(this);
+        this.addHandler = this.addHandler.bind(this);
+      this.handleSubmit =this.handleSubmit.bind(this);
         console.log("update" + this.state.update)
       }
 
- 
 
-      
-    //   fetchNotesHandler = (key) =>{
-    //     axios.get(`https://cookbook-addec.firebaseio.com/cake/${key}/notes.json`)
-    //     .then(response => {
-    //         this.setState({value: response.data});
-    //         console.log(response);
-    //     });
-    // }
 
     changeUpdateHandler = (string, updateState) => {
-      console.log(`initial update ${this.state.update}`)
-
-      // if(this.state.update === false){
-      //   this.setState({update: true})
-      // }else if(this.state.update === true){
-      //   this.setState({update: false})
-      // }
+      console.log(`initial update ${this.state.update}`);
       this.setState({update: updateState});
       setTimeout(()=> 
       console.log(`actual state: ${string} ${this.state.update}`)
       , 500);
     }
+
+    
       
  
   
-    deleteHandler = (key) => {
+    removeHandler = (key) => {
         console.log("deleted" + true); 
         this.setState({key: key})
-        // this.changeUpdateHandler("pierwsza",true);
-        // 
-        setTimeout(() =>axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+        
+       axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
             notes: ""
         })
         .then(res => {
-          
           alert("Usunięto")
           
           console.log("update: " + this.state.update)
@@ -67,7 +53,7 @@ class RecipeNotes extends Component{
         .catch(e =>{
             alert("error")
         })
-        ,500);
+       
         
         
         console.log("up" +this.state.update)
@@ -76,17 +62,39 @@ class RecipeNotes extends Component{
 
    
     
-      handleChange(event){
+      changeHandler(event){
         this.setState({value: event.target.value});
-      }
-    
-      handleSubmit(key, event) {
-        alert('Podano następujące imię: ' + this.state.value);
-     
-      
         
-       
       }
+
+      handleSubmit(event){
+        event.target.value="";
+        event.preventDefault();
+      }
+
+
+    
+      addHandler = (key, event) =>{
+       
+        this.setState({update: true})
+     
+        axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+          notes: this.props.notes + this.state.value
+         })
+      .then(res => {
+        
+        alert("Dodano")
+        
+        console.log("update: " + this.state.update)
+        this.setState({update: false})
+        this.setState({value: " "})
+       
+        
+      })
+      .catch(e =>{
+          alert("error")
+      })
+     }
 
 
     render(){
@@ -100,7 +108,7 @@ class RecipeNotes extends Component{
     }
     else if(this.state.value === ""){
       notes = propsNotes;
-    }else if((this.state.value !== "") && (this.propsNotes !== "")){
+    }else if((this.state.value !== "") && (this.propsNotes !== "") || (this.state.key) ){
       notes = propsNotes + this.state.value
     }else if((propsNotes === "") || (this.props.key !== this.propsKey)){
       notes = this.state.value
@@ -116,10 +124,11 @@ class RecipeNotes extends Component{
               
             <div>
             <p>{notes}</p> 
-                <input type="text" placeholder="Dodaj notatkę" onChange={this.handleChange} />
-                <ButtonsControl type="Save" btnTypes="Save" action={this.handleSubmit} ></ButtonsControl>
-                <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(this.props.keyId)} >Usuń</ButtonsControl>
-               
+            
+                <input type="text" id="input_text" placeholder={this.state.value} onChange={this.changeHandler} onMouseLeave={this.handleSubmit} />
+                <ButtonsControl type="Save" btnTypes="Save" action={(e) => this.addHandler(this.props.keyId, e.target.value) } ></ButtonsControl>
+                <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.removeHandler(this.props.keyId)} >Usuń</ButtonsControl>
+                
             </div>
             </div>
             </Aux>

@@ -23,19 +23,6 @@ class RecipeNotes extends Component{
       }
 
 
-
-    changeUpdateHandler = (string, updateState) => {
-      console.log(`initial update ${this.state.update}`);
-      this.setState({update: updateState});
-      setTimeout(()=> 
-      console.log(`actual state: ${string} ${this.state.update}`)
-      , 500);
-    }
-
-    
-      
- 
-  
     removeHandler = (key) => {
         console.log("deleted" + true); 
         this.setState({key: key})
@@ -44,21 +31,15 @@ class RecipeNotes extends Component{
             notes: ""
         })
         .then(res => {
+          this.setState({update: true})
           alert("Usunięto")
-          
           console.log("update: " + this.state.update)
-         
-            
         })
         .catch(e =>{
             alert("error")
         })
-       
-        
-        
         console.log("up" +this.state.update)
-        
-    }
+      }
 
    
     
@@ -74,41 +55,36 @@ class RecipeNotes extends Component{
 
 
     
-      addHandler = (key, event) =>{
+      addHandler = (key) =>{
        
         this.setState({update: true})
-     
         axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
           notes: this.props.notes + this.state.value
          })
       .then(res => {
         
         alert("Dodano")
+         this.setState({update: false})
+        this.setState({notes: this.props.notes + this.state.value})
         
-        console.log("update: " + this.state.update)
-        this.setState({update: false})
         this.setState({value: " "})
-       
-        
+        console.log("update: " + this.state.update)
       })
       .catch(e =>{
           alert("error")
       })
-     }
+    }
 
 
     render(){
        
-    let notes;
+    let notes = "";
     let propsNotes=this.props.notes;
     let propsKey = this.props.keyId;
 
-    if(this.state.key === propsKey){
-      notes=""
-    }
-    else if(this.state.value === ""){
+   if(this.state.value === ""){
       notes = propsNotes;
-    }else if((this.state.value !== "") && (this.propsNotes !== "") || (this.state.key) ){
+   }else if((this.state.value !== "") && (this.propsNotes !== "") ){
       notes = propsNotes + this.state.value
     }else if((propsNotes === "") || (this.props.key !== this.propsKey)){
       notes = this.state.value
@@ -126,7 +102,7 @@ class RecipeNotes extends Component{
             <p>{notes}</p> 
             
                 <input type="text" id="input_text" placeholder={this.state.value} onChange={this.changeHandler} onMouseLeave={this.handleSubmit} />
-                <ButtonsControl type="Save" btnTypes="Save" action={(e) => this.addHandler(this.props.keyId, e.target.value) } ></ButtonsControl>
+                <ButtonsControl type="Save" btnTypes="Success" action={() => this.addHandler(this.props.keyId) } ></ButtonsControl>
                 <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.removeHandler(this.props.keyId)} >Usuń</ButtonsControl>
                 
             </div>

@@ -89,6 +89,11 @@ notesCancelHandler = () =>{
     
 }
 
+notesSaveHandler = () => {
+    alert("zapisano")
+    this.fetchDatahandler();
+}
+
 
 
 render(){
@@ -96,7 +101,10 @@ render(){
     let recipe;
     // console.log(this.state.key)
   
-    recipe = <RecipeNotes keyId={this.state.key} notes={this.state.notes} show={this.state.notesShow} modalClosed={this.notesCancelHandler}></RecipeNotes>
+    recipe = <RecipeNotes keyId={this.state.key} 
+                        notes={this.state.notes} 
+                        show={this.notesSaveHandler} 
+                        modalClosed={this.notesCancelHandler}></RecipeNotes>
    
 
         if(this.state.cake){

@@ -32,7 +32,8 @@ class RecipeNotes extends Component{
         })
         .then(res => {
           this.setState({update: true})
-          alert("Usunięto")
+          alert("Usunięto");
+         
           console.log("update: " + this.state.update)
         })
         .catch(e =>{
@@ -55,17 +56,17 @@ class RecipeNotes extends Component{
 
 
     
-      addHandler = (key) =>{
+      addHandler = (key, show) =>{
        
         this.setState({update: true})
         axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
           notes: this.props.notes + this.state.value
          })
       .then(res => {
-        
+        this.setState({notes: this.props.notes + this.state.value})
         alert("Dodano")
          this.setState({update: false})
-        this.setState({notes: this.props.notes + this.state.value})
+        
         
         this.setState({value: " "})
         console.log("update: " + this.state.update)
@@ -82,7 +83,10 @@ class RecipeNotes extends Component{
     let propsNotes=this.props.notes;
     let propsKey = this.props.keyId;
 
-   if(this.state.value === ""){
+    if((this.state.notes !== "") && (this.state.key === this.propsKey)){
+      notes = this.state.notes;
+    
+    }else if((this.state.value === "") && this.state.notes === ""){
       notes = propsNotes;
    }else if((this.state.value !== "") && (this.propsNotes !== "") ){
       notes = propsNotes + this.state.value
@@ -102,7 +106,7 @@ class RecipeNotes extends Component{
             <p>{notes}</p> 
             
                 <input type="text" id="input_text" placeholder={this.state.value} onChange={this.changeHandler} onMouseLeave={this.handleSubmit} />
-                <ButtonsControl type="Save" btnTypes="Success" action={() => this.addHandler(this.props.keyId) } ></ButtonsControl>
+                <ButtonsControl type="Save" btnTypes="Success" action={() => this.addHandler(this.props.keyId, this.props.show)} ></ButtonsControl>
                 <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.removeHandler(this.props.keyId)} >Usuń</ButtonsControl>
                 
             </div>

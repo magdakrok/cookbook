@@ -10,7 +10,7 @@ import RecipeNotes from '../../components/Recipe/RecipeNotes/RecipeNotes';
 import Modal from '../../components/UI/Modal/Modal';
 import NotesButton from '../../components/UI/Buttons/NotesButton/NotesButton';
 import ButtonsControl from '../../components/UI/Buttons/ButtonsControl/ButtonsControl';
-
+import Confirm from '../../components/UI/Confirm/Confirm';
 
 class RecipesBuilder extends Component{
 
@@ -40,6 +40,8 @@ fetchDatahandler= () =>{
 
 
 deleteHandler = (key,  e) => {
+
+    
     axios.delete(`https://cookbook-addec.firebaseio.com/cake/${key}.json`
     )
     .then(res => {
@@ -122,7 +124,11 @@ render(){
                             <div className={classes.RecipeButtonsContainer}>
                         
                             <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
+                            
                             <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
+                            <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>
+                                 <Confirm></Confirm>
+                             </Modal>
                             <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)} ></ButtonsControl>
                            
                            

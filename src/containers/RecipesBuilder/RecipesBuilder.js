@@ -19,6 +19,7 @@ class RecipesBuilder extends Component{
         update: false,
         favorite: false,
         notesShow: false,
+        confirmShow: false,
         notes: null,
         key: null
         
@@ -78,6 +79,14 @@ changeFavoriteHandler = (key,recipeFavorite) => {
 
 }
 
+confirmHandler = () =>{
+    this.setState({confirmShow: true})
+}
+
+confirmCancelHandler = () =>{
+    this.setState({confirmShow: false})
+}
+
 notesHandler = (cKey, notes) =>{
     this.setState({notesShow: true})
     this.setState({key: cKey})
@@ -101,13 +110,19 @@ notesSaveHandler = () => {
 render(){
     
     let recipe;
+    let confirmWindow;
     // console.log(this.state.key)
   
     recipe = <RecipeNotes keyId={this.state.key} 
                         notes={this.state.notes} 
                         show={this.notesSaveHandler} 
-                        modalClosed={this.notesCancelHandler}></RecipeNotes>
+                        modalClosed={this.notesCancelHandler}>
+            </RecipeNotes>
+
    
+            
+   
+    
 
         if(this.state.cake){
           recipe = (Object.keys(this.state.cake).map(key => {
@@ -125,10 +140,10 @@ render(){
                         
                             <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
                             
-                            <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.deleteHandler(key)}>Usuń</ButtonsControl>
-                            <Modal show={this.state.notesShow} modalClosed={this.notesCancelHandler}>
-                                 <Confirm></Confirm>
-                             </Modal>
+                            <ButtonsControl type="Danger" btnTypes="Danger" action = {this.confirmHandler}>Usuń</ButtonsControl>
+                            <Modal show={this.state.confirmShow} modalClosed={this.confirmCancelHandler}>
+                                <Confirm></Confirm>
+                            </Modal>
                             <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)} ></ButtonsControl>
                            
                            

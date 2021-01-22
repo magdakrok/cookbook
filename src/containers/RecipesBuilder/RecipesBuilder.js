@@ -47,6 +47,7 @@ deleteHandler = (key,  e) => {
     )
     .then(res => {
         console.log(res.data);
+        this.confirmCancelHandler();
         this.fetchDatahandler();
         
     })
@@ -142,7 +143,7 @@ render(){
                             
                             <ButtonsControl type="Danger" btnTypes="Danger" action = {this.confirmHandler}>Usuń</ButtonsControl>
                             <Modal show={this.state.confirmShow} modalClosed={this.confirmCancelHandler}>
-                                <Confirm></Confirm>
+                                <Confirm action={()=>this.deleteHandler(key)} cancel={this.confirmCancelHandler}></Confirm>
                             </Modal>
                             <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)} ></ButtonsControl>
                            

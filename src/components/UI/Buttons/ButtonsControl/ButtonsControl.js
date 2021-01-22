@@ -13,15 +13,15 @@ const buttonsControl = (props) =>{
 
   if((props.type === "Heart") ){
       console.log(props.btnTypes)
-      buttonType = (<HeartButton btnTypes={props.btnTypes} setFavorite={props.setFavorite}></HeartButton>)
+      buttonType = (<HeartButton btnTypes={props.btnTypes} setFavorite={props.setFavorite}>{props.children}</HeartButton>)
   
   }else if(props.type === "Danger"){
     console.log(props.btnTypes)
-   buttonType = ( <Button btnTypes={props.btnTypes} action={props.action}>Usuń</Button>)
+   buttonType = ( <Button btnTypes={props.btnTypes} action={props.action}>{props.children}</Button>)
   } else if(props.type ==="notes"){
-    buttonType = (<NotesButton notes={props.notes} >  </NotesButton>)
+    buttonType = (<NotesButton notes={props.notes} > {props.children} </NotesButton>)
   }else if(props.type === "Save"){
-    buttonType =(<Button btnTypes={props.btnTypes} action={props.action}>Zapisz</Button>)
+    buttonType =(<Button btnTypes={props.btnTypes} action={props.action}>{props.children}</Button>)
   }
 
   

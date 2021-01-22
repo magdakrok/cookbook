@@ -6,9 +6,10 @@ const confirm = (props)=>(
 
     <div className = {classes.Confirm}>
       <span>Czy na pewno chcesz usunąć przepis?</span>
-            <ButtonsControl type="Save" btnTypes="Success" action={props.cancel} ></ButtonsControl>
-            <ButtonsControl type="Danger" btnTypes="Danger" action = {props.action} ></ButtonsControl>
-
+      <div className={classes.ConfirmButtons}>
+            <ButtonsControl type="Save" btnTypes="Success" action={props.cancel} >Anuluj</ButtonsControl>
+            <ButtonsControl type="Danger" btnTypes="Danger" action = {props.action} >Usuń</ButtonsControl>
+        </div>
     </div>
 )
 

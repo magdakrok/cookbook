@@ -132,9 +132,10 @@ class RecipeNotes extends Component{
             <p>{notes}</p> 
             
                 <input type="text" id="input_text" placeholder={this.state.value} onChange={this.changeHandler} onMouseLeave={this.handleSubmit} />
-                <ButtonsControl type="Save" btnTypes="Success" action={() => this.addHandler(this.props.keyId)} ></ButtonsControl>
+                <div className={classes.RecipeNotesButtons}>
+                <ButtonsControl type="Save" btnTypes="Success" action={() => this.addHandler(this.props.keyId)} >Zapisz</ButtonsControl>
                 <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.removeHandler(this.props.keyId)} >Usuń</ButtonsControl>
-                
+                </div>
             </div>
             </div>
             </Aux>

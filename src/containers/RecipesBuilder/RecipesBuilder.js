@@ -116,8 +116,8 @@ render(){
   
     recipe = <RecipeNotes keyId={this.state.key} 
                         notes={this.state.notes} 
-                        show={this.notesSaveHandler} 
-                        modalClosed={this.notesCancelHandler}>
+                        notesShow={this.notesSaveHandler} 
+                        cancel={this.notesCancelHandler}>
             </RecipeNotes>
 
    
@@ -142,9 +142,11 @@ render(){
                             <ButtonsControl type="Heart" btnTypes={cKey.favorite}  setFavorite={() => this.changeFavoriteHandler(key, cKey.favorite)}>{this.props.children}</ButtonsControl>
                             
                             <ButtonsControl type="Danger" btnTypes="Danger" action = {this.confirmHandler}>Usuń</ButtonsControl>
+                            
                             <Modal show={this.state.confirmShow} modalClosed={this.confirmCancelHandler}>
                                 <Confirm action={()=>this.deleteHandler(key)} cancel={this.confirmCancelHandler}></Confirm>
                             </Modal>
+
                             <ButtonsControl type="notes" notes={()=>this.notesHandler(key, cKey.notes)} ></ButtonsControl>
                            
                            

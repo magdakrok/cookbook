@@ -17,11 +17,11 @@ const buttonsControl = (props) =>{
   
   }else if(props.type === "Danger"){
     console.log(props.btnTypes)
-   buttonType = ( <Button btnTypes={props.btnTypes} action={props.action}>{props.children}</Button>)
+   buttonType = ( <Button btnTypes={props.btnTypes} action={props.action} >{props.children}</Button>)
   } else if(props.type ==="notes"){
     buttonType = (<NotesButton notes={props.notes} > {props.children} </NotesButton>)
   }else if(props.type === "Save"){
-    buttonType =(<Button btnTypes={props.btnTypes} action={props.action}>{props.children}</Button>)
+    buttonType =(<Button btnTypes={props.btnTypes} action={props.action} >{props.children}</Button>)
   }
 
   

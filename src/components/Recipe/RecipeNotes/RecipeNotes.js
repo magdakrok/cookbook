@@ -22,11 +22,6 @@ class RecipeNotes extends Component{
         console.log("update" + this.state.update)
       }
 
-     componentDidUpdate(prevProps){
-     if( this.props.userID !== prevProps.userID) {
-
-     }
-     }
 
     removeHandler = (key) => {
         console.log("deleted" + true); 
@@ -73,6 +68,7 @@ class RecipeNotes extends Component{
          this.setState({update: false})
         
         
+        
         this.setState({value: ""})
         console.log("notes: " + this.state.notes)
       })
@@ -95,22 +91,38 @@ class RecipeNotes extends Component{
     // }else if((this.state.key === this.props.keyId) && (this.state.notes !== " ")){
     //   notes = this.state.notes
     // }
-    
-    
-    if((this.state.notes !== "") && (this.state.key === this.state.keyId)){
+
+
+    if((this.state.value === "") && (this.state.key === this.props.keyId) ){
       notes = this.state.notes
-    } else if((this.state.value === "") && (this.state.key === this.props.keyId)){
-        notes = this.state.notes
-      
-      }
-   else if((this.state.value !== "") && (this.propsNotes !== "") ){
-      notes = propsNotes + this.state.value
-   }
-    else if((propsNotes === "") || (this.props.key === this.propsKey)){
-      notes = this.state.value
-    }else if(this.state.update === true){
-      notes = " "
+    }else if((this.state.value !== "") && (this.state.key === this.props.keyId)){
+      notes = this.props.notes + this.state.value
     }
+    // else if(this.state.update === true){
+    //       notes = ""
+    //     }
+    
+    
+  //   if((this.state.notes !== "") && (this.state.key === this.state.keyId)){
+  //     notes = this.state.notes
+  //   } else if((this.state.value === "") && (this.state.key === this.props.keyId)){
+  //       notes = this.state.notes
+      
+  //     }
+  //  else if((this.state.value !== "") && (this.propsNotes !== "") ){
+  //     notes = propsNotes + this.state.value
+  //  }
+  //   else if((propsNotes === "") || (this.props.key === this.propsKey)){
+  //     notes = this.state.value
+  //   }else if(this.state.update === true){
+  //     notes = " "
+  //   }
+
+  // if((this.state.value !== "") && (this.state.key === this.props.keyId)){
+  //   notes = this.props.notes + this.state.value
+  // }else if((this.state.value === "") && (this.state.key === this.props.keyId)){
+  //   notes = this.state.notes
+  // }
   // if((this.state.update === true) && (this.state.value === " ") && (this.state.key === this.props.keyId)){
   //   notes = ""
   // }else if((this.state.value === "") && (this.state.key === this.propsKey) && (this.state.notes !== "")){
@@ -133,8 +145,8 @@ class RecipeNotes extends Component{
             
                 <input type="text" id="input_text" placeholder={this.state.value} onChange={this.changeHandler} onMouseLeave={this.handleSubmit} />
                 <div className={classes.RecipeNotesButtons}>
-                <ButtonsControl type="Save" btnTypes="Success" action={() => this.addHandler(this.props.keyId)} >Zapisz</ButtonsControl>
-                <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.removeHandler(this.props.keyId)} >Usuń</ButtonsControl>
+                <ButtonsControl type="Save" btnTypes="Success"  action={() => this.addHandler(this.props.keyId)} cancel = {this.props.notesCancel}>Zapisz</ButtonsControl>
+                <ButtonsControl type="Danger" btnTypes="Danger" action = {() => this.removeHandler(this.props.keyId)} cancel = {this.props.notesCancel} >Usuń</ButtonsControl>
                 </div>
             </div>
             </div>

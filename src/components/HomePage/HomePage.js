@@ -6,6 +6,8 @@ const homePage = (props) => (
 
     <div className={classes.HomePage}>
         
+
+        
         <p>strona główna</p>
     </div>
 )

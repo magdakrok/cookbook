@@ -29,6 +29,7 @@ class RecipesBuilder extends Component{
 
 componentDidMount(){
    this.fetchDatahandler();
+   console.log("params " + this.props.match.params.cake)
 }
     
 fetchDatahandler= () =>{

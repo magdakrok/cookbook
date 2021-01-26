@@ -9,10 +9,13 @@ function App() {
   return (
     <div>
       <Layout>
-        {/* <Switch>
+        <Switch>
+        <Route path='/:cake' component={RecipesBuilder}/>
+        <Route path='/:salad' component={RecipesBuilder}/>
+        <Route path='/:cook' component={RecipesBuilder}/>
        <Route path="/" exact component={HomePage} />
-       </Switch> */}
-       <HomePage/>
+       </Switch>
+      
       </Layout>
     </div>
   );

@@ -22,29 +22,33 @@ class RecipesBuilder extends Component{
         confirmShow: false,
         notes: null,
         key: null
-        
-        
     }
 
+    
 
 componentDidMount(){
-   this.fetchDatahandler();
-   console.log("params " + this.props.match.params.cake)
+    this.fetchDatahandler();
 }
     
 fetchDatahandler= () =>{
-    axios.get('https://cookbook-addec.firebaseio.com/cake.json')
+    const { params } = this.props.match;
+    axios.get(`https://cookbook-addec.firebaseio.com/${params.type}.json`)
     .then(response => {
         this.setState({cake: response.data});
+        this.setState({type: "rngjregj"})
         console.log(response);
+    }).catch(e =>{
+        alert("error")
     });
+    this.setState({type: "nvjekngveng"});
+    console.log("param" + this.state.type)
 }
 
 
 deleteHandler = (key,  e) => {
 
-    
-    axios.delete(`https://cookbook-addec.firebaseio.com/cake/${key}.json`
+    const { params } = this.props.match;
+    axios.delete(`https://cookbook-addec.firebaseio.com/${params.type}/${key}.json`
     )
     .then(res => {
         console.log(res.data);
@@ -60,6 +64,7 @@ deleteHandler = (key,  e) => {
 
 
 changeFavoriteHandler = (key,recipeFavorite) => {
+    const { params } = this.props.match;
         
     if(recipeFavorite === false){
         this.setState({favorite: true})
@@ -69,7 +74,7 @@ changeFavoriteHandler = (key,recipeFavorite) => {
     }
 
     
-    setTimeout(()=>axios.patch(`https://cookbook-addec.firebaseio.com/cake/${key}.json`, {
+    setTimeout(()=>axios.patch(`https://cookbook-addec.firebaseio.com/${params.type}/${key}.json`, {
         favorite: this.state.favorite
       }).then(res => {
        this.fetchDatahandler();
@@ -122,11 +127,7 @@ render(){
             </RecipeNotes>
 
    
-            
-   
-    
-
-        if(this.state.cake){
+if(this.state.cake){
           recipe = (Object.keys(this.state.cake).map(key => {
                 return [...Array(this.state.cake[key])].map((cKey, i ) => {
                    return (
